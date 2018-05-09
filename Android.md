@@ -29,7 +29,7 @@ repositories {
 }
 ```
 
-*The USERNAME and PASSWORD will be provided by Unacast.*
+*The USERNAME and PASSWORD will be provided by fluxLoop.*
 
 Add the below line to your app's `build.gradle` inside the `dependencies` section:
 
@@ -152,7 +152,7 @@ public void onRequestPermissionsResult(int requestCode,
 
 ### Onboarding
 
-It's important to ask for these permissions at the right time to get as many users as possible to opt in and to give a better user experience. Users should be presented with a reason for requesting location permission before triggering the actual OS permission dialog and you should also explain this in the terms together with how a user can opt out from tracking later on. Please contact Unacast if you need any language regarding this. There could also be scenarios where you want to trigger onboarding only for citizens of certain countries. Checking the country code and time zone of the device, could be a good way to do this.
+It's important to ask for these permissions at the right time to get as many users as possible to opt in and to give a better user experience. Users should be presented with a reason for requesting location permission before triggering the actual OS permission dialog and you should also explain this in the terms together with how a user can opt out from tracking later on. Please contact fluxLoop if you need any language regarding this. There could also be scenarios where you want to trigger onboarding only for citizens of certain countries. Checking the country code and time zone of the device, could be a good way to do this.
 
 ### Check if tracking is enabled
 It's recommended to have a switch under settings in your app where the user can enable and disable tracking. The current status can be checked by *Pure.getIsTracking()*
@@ -413,7 +413,7 @@ In the default configuration, the SDK will used JobScheduler on Android 5+ to fu
 
 
 ## Geo-filtering
-The SDK has built in support for geo-filtering. This means that if you need to blacklist or whitelist any areas this can be done through the cloud configuration. If you need to use geo-filtering, please contact Unacast to agree on which areas you want to enable. If an area is blacklisted, the SDK will go into blacklist mode and not send any data. It will still do the occational location lookup to see if the device has moved to a valid location, but it will not send these events while in blacklisted areas. 
+The SDK has built in support for geo-filtering. This means that if you need to blacklist or whitelist any areas this can be done through the cloud configuration. If you need to use geo-filtering, please contact fluxLoop to agree on which areas you want to enable. If an area is blacklisted, the SDK will go into blacklist mode and not send any data. It will still do the occational location lookup to see if the device has moved to a valid location, but it will not send these events while in blacklisted areas. 
 
 
 ## Troubleshooting
