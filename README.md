@@ -13,6 +13,6 @@ The SDK relies on scanning jobs running in the background. Below you will find i
 ### How to implement
 The documentation for the Pure SDK depends on your operating system:
 
-* [Android](https://github.com/fluxloop/pure-sdk/blob/master/Android.md)
-* [iOS](https://github.com/fluxloop/pure-sdk/blob/master/iOS.md)
+* [Android](Android/)
+* [iOS](iOS/)
 
