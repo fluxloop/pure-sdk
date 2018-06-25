@@ -31,7 +31,7 @@ Download the latest version of the pod from :
 
 That's it! These instructions were last tested on Xcode 9.4. For comparison, your `General` tab should look like this :
 
-![finished-settings](https://github.com/fluxloop/pure-sdk/blob/master/iOS/dynamic_framework_integration_result.png)
+![finished-settings](https://raw.github.com/fluxloop/pure-sdk/blob/master/iOS/dynamic_framework_integration_result.png)
 
 ## Permissions
 
