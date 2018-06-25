@@ -4,7 +4,7 @@
 The iOS SDK is available for applications targeting iOS 9.0 and above.
 
 ## Installation
-*You need a key to use this pod, and you should have been provided this.*
+*You need a key to use this pod, and Unacast should have provided you with one.*
 
 ### Cocoapods
 
@@ -31,7 +31,7 @@ Download the latest version of the pod from :
 
 That's it! These instructions were last tested on Xcode 9.4. For comparison, your `General` tab should look like this :
 
-![finished-settings](https://raw.githubusercontent.com/unacast/pure-sdk-ios/master/dynamic_framework_integration_result.png)
+![finished-settings](https://github.com/unacast/pure-sdk-ios/blob/master/dynamic_framework_integration_result.png)
 
 ## Permissions
 
@@ -84,7 +84,11 @@ pod 'PureSDKBluetooth', :podspec => 'https://puresdk.azurewebsites.net/cocoapods
 #### Dynamic Framework
 
 First, download `PureSDKBluetooth.framework` at `https://puresdk.azurewebsites.net/cocoapods/versions/bluetooth/latest?key=INSERT_KEY_HERE`.
-Then, follow instructions 1-5 as listed in  `Installation > Dynamic Framework`, except use `PureSDKBluetooth.framework` instead of `PureSDK.framework`.
+Then, follow instructions 1-7 as listed in  `Installation > Dynamic Framework`, except :
+1. use `PureSDKBluetooth.framework` instead of `PureSDK.framework`.
+2. add `bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureSDKBluetooth.framework/strip-frameworks.sh"` as a new line
+
+![finished-run-script](https://github.com/unacast/pure-sdk-ios/blob/master/blt_run_script.png)
 
 ## Usage
 
@@ -98,6 +102,8 @@ Then, somewhere of your choosing (can be placed right after the above call if de
 ```objective-c
 [Pure startTracking];
 ```
+
+`initializeWithLaunchOptions` must be called before any other methods can be called on `Pure.h`
 
 At any time, event collection can be stopped by calling :
 ```objective-c
