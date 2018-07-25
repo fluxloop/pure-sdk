@@ -22,7 +22,7 @@ pod 'PureSDK', :podspec => 'http://puresdk.azurewebsites.net/cocoapods/sdk/versi
 
 Download the latest version of the framework from :
 
-`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.61.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.62.zip?key=INSERT_KEY_HERE`
 
 1. Open your project in Xcode.
 2. Drag and drop `PureSDK.framework` into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
@@ -35,11 +35,11 @@ This script (written by the excellent team at RealmCocoa!) removes architecture 
 
 That's it! These instructions were last tested on Xcode 9.4 (9F1027a) and Xcode 10 (10L176w). For comparison, your `General` tab should look like this :
 
-![finished-settings](https://github.com/unacast/pure-sdk-ios/blob/master/dynamic_framework_integration_result.png)
+![finished-settings](https://github.com/fluxloop/pure-sdk/blob/master/iOS//dynamic_framework_integration_result.png)
 
 and the build phase "Strip Invalid Archs" should look like this :
 
-![run-script](https://github.com/unacast/pure-sdk-ios/blob/master/run-script.png)
+![run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS//run-script.png)
 
 ## Permissions
 
@@ -93,13 +93,13 @@ pod 'PureSDKBluetooth', :podspec => 'https://puresdk.azurewebsites.net/cocoapods
 #### Dynamic Framework
 
 The bluetooth framework can be downloaded at :
-`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.61.zip?key=INSERT_KEY_HERE`.
+`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.62.zip?key=INSERT_KEY_HERE`.
 
 Then, follow instructions 1-7 as listed in  `Installation > Dynamic Framework`, except :
 1. use `PureSDKBluetooth.framework` instead of `PureSDK.framework`.
 2. add `bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureSDKBluetooth.framework/strip-frameworks.sh"` as a new line. The finished "Strip Invalid Archs" run script should look like this :
 
-![finished-run-script](https://github.com/unacast/pure-sdk-ios/blob/master/blt_run_script.png)
+![finished-run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS//blt_run_script.png)
 
 ## Usage
 
