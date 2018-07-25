@@ -35,11 +35,11 @@ This script (written by the excellent team at RealmCocoa!) removes architecture 
 
 That's it! These instructions were last tested on Xcode 9.4 (9F1027a) and Xcode 10 (10L176w). For comparison, your `General` tab should look like this :
 
-![finished-settings](https://github.com/fluxloop/pure-sdk/blob/master/iOS//dynamic_framework_integration_result.png)
+![finished-settings](https://github.com/fluxloop/pure-sdk/blob/master/iOS/dynamic_framework_integration_result.png)
 
 and the build phase "Strip Invalid Archs" should look like this :
 
-![run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS//run-script.png)
+![run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS/run_script.png)
 
 ## Permissions
 
@@ -99,7 +99,7 @@ Then, follow instructions 1-7 as listed in  `Installation > Dynamic Framework`, 
 1. use `PureSDKBluetooth.framework` instead of `PureSDK.framework`.
 2. add `bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureSDKBluetooth.framework/strip-frameworks.sh"` as a new line. The finished "Strip Invalid Archs" run script should look like this :
 
-![finished-run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS//blt_run_script.png)
+![finished-run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS/blt_run_script.png)
 
 ## Usage
 
