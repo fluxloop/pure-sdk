@@ -214,3 +214,12 @@ Sample iBeacon Event :
 ```
 
 Each event has additional identifying information sent with it to determine the state of the user's device.
+
+## Delete personal data
+If the user wants to delete collected personal data, notify our service by triggering the following event:
+
+```
+Pure.createEvent("Privacy", { deletePersonalData: true })
+```
+
+
