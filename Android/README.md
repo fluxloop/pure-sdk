@@ -41,7 +41,7 @@ implementation 'com.pure:sdk:1.2.15'
 
 The above reference will get the currently latest stable release of the SDK ([Changelog](Changelog/)) It is also possible to reference 'com.pure:sdk:1+' to always get the latest release build, but it's recommended to target a specific release. The major version will only change if there's a breaking change in the API. So as long the major version is the same as previously targeted, you should not need to alter any code when upgrading. Notice of any updates to the SDK will be sent through mail once you're a registered developer.
 
-If targeting `com.google.gms:google-services` newer than 3.2.0, you will have to add the following implementations to your **app** `build.gradle` dependencies:
+Add the following implementations to your **app** `build.gradle` dependencies:
 `com.google.android.gms:play-services-ads`
 `com.google.android.gms:play-services-awareness`
 
