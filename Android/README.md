@@ -34,7 +34,7 @@ repositories {
 Add the below line to your app's `build.gradle` inside the `dependencies` section:
 
 ```groovy
-implementation 'com.pure:sdk:1.2.15'
+implementation 'com.pure:sdk:1.2.19'
 ```
 
 
@@ -172,7 +172,7 @@ All configurations used by the SDK is provided by an external endpoint. This mak
 The SDK relies on scanning jobs running in the background. As these needs an application unique jobid, it's possible to change the range being used in case of collision with your own application. This is done by adding the following in your AndroidManifest.xml:
 
 ```xml
-<metadata android:name="com.pure.sdk.JobIdStartId">47483640</metadata>
+   <meta-data android:name="com.pure.sdk.JobIdStartId" android:value="47483640" />
 ```
 The default start index is 47483640 and the SDK reserves 20 ids starting from the default.
 
