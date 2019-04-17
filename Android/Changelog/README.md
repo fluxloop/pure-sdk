@@ -3,6 +3,20 @@
 
 ## Changelog
 
+### 1.2.22
+- Fixed timestamps in cell info
+
+### 1.2.21
+- CellInfo collection is now configurable
+
+### 1.2.20
+- Added CellInfo
+- New metrics collected for Wifi
+
+### 1.2.19
+- Now reports if Play Services is missing permissions
+- The SDK should now prevent Play Services from reporting apps using the SDK if any permission is missing
+
 ### 1.2.15
 - Added optional data encryption
 
