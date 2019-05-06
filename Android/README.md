@@ -34,7 +34,7 @@ repositories {
 Add the below line to your app's `build.gradle` inside the `dependencies` section:
 
 ```groovy
-implementation 'com.pure:sdk:1.2.22'
+implementation 'com.pure:sdk:1.2.24'
 ```
 
 
