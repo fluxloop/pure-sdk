@@ -3,6 +3,16 @@
 
 ## Changelog
 
+
+### 1.2.25
+- Fixed issue with log not being cleared if reaching the entry limit
+
+### 1.2.24
+- Now ignores accuracy and bearing properties if not available
+
+### 1.2.23
+- Added missing Id4 for cell info
+
 ### 1.2.22
 - Fixed timestamps in cell info
 
