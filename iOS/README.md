@@ -54,6 +54,7 @@ and the build phase "Strip Invalid Archs" should look like this :
 ![run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS/run_script.png)
 
 ## Permissions
+<a name="permissions"></a>
 
 Some of the SDK's data collection sources require extra keys in `Info.plist`, and some require the user to accept a popup. We will never trigger the permission popups from our code. It is your responsibility to present the permission prompt alert at an appropriate time.
 
