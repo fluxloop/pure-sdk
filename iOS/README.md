@@ -34,7 +34,7 @@ Make sure you've followed the instructions on the Carthage website, specifically
 
 Download the latest version of the framework from :
 
-`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.83.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.84.zip?key=INSERT_KEY_HERE`
 
 1. Open your project in Xcode.
 2. Drag and drop `PureSDK.framework` into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
@@ -54,7 +54,6 @@ and the build phase "Strip Invalid Archs" should look like this :
 ![run-script](https://github.com/fluxloop/pure-sdk/blob/master/iOS/run_script.png)
 
 ## Permissions
-<a name="permissions"></a>
 
 Some of the SDK's data collection sources require extra keys in `Info.plist`, and some require the user to accept a popup. We will never trigger the permission popups from our code. It is your responsibility to present the permission prompt alert at an appropriate time.
 
@@ -117,7 +116,7 @@ Make sure you've followed the instructions on the Carthage website, specifically
 
 The bluetooth framework can be downloaded at :
 
-`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.83.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.84.zip?key=INSERT_KEY_HERE`
 
 Then, follow instructions 1-6 as listed in  `Installation > Dynamic Framework`, except :
 1. use `PureSDKBluetooth.framework` instead of `PureSDK.framework`.
