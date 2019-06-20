@@ -3,6 +3,8 @@
 
 ## Changelog
 
+### 1.2.26
+- Fixed issue with age on cellInfo and wifi events
 
 ### 1.2.25
 - Fixed issue with log not being cleared if reaching the entry limit
