@@ -29,32 +29,22 @@ repositories {
 }
 ```
 
-*The USERNAME and PASSWORD will be provided by fluxLoop.*
+*The USERNAME and PASSWORD will be provided by Unacast.*
 
 Add the below line to your app's `build.gradle` inside the `dependencies` section:
 
 ```groovy
-implementation 'com.pure:sdk:1.2.24'
+implementation 'com.pure:sdk:1.2.26'
 ```
 
+The above reference will get the currently latest stable release of the SDK ([Changelog](Changelog/)). It is also possible to reference 'com.pure:sdk:1+' to always get the latest release build, but it's recommended to target a specific release. The major version will only change if there's a breaking change in the API. So as long the major version is the same as previously targeted, you should not need to alter any code when upgrading. Notice of any updates to the SDK will be sent through mail once you're a registered developer.
 
 
-The above reference will get the currently latest stable release of the SDK ([Changelog](Changelog/)) It is also possible to reference 'com.pure:sdk:1+' to always get the latest release build, but it's recommended to target a specific release. The major version will only change if there's a breaking change in the API. So as long the major version is the same as previously targeted, you should not need to alter any code when upgrading. Notice of any updates to the SDK will be sent through mail once you're a registered developer.
+*IMPORTANT!* If targeting 15+, you need to include a reference to the following dependencies in your  **app** `build.gradle`:
 
-Add the following implementations to your **app** `build.gradle` dependencies:
-`com.google.android.gms:play-services-ads`
-`com.google.android.gms:play-services-awareness`
 
-If you need to downgrade the play-services-awareness version, use *force*:
-
-```groovy
-    implementation ('com.google.android.gms:play-services-awareness:9.6.0')
-    {
-        force = true
-    }
-```
-
-*IMPORTANT! If targeting 15+, you need to include a reference to 'com.google.android.gms:play-services-ads' as this artifact has been removed from awareness from that version.*
+- `com.google.android.gms:play-services-ads-identifier`
+- `com.google.android.gms:play-services-awareness`
 
 #### Proguard
 If you are using proguard, make sure to add this line to your proguard definition
@@ -65,7 +55,7 @@ If you are using proguard, make sure to add this line to your proguard definitio
 
 ##### Download
 
-It's also possible to download the SDK. Head to http://puresdk.azurewebsites.net/ and login with your USERNAME and PASSWORD and download the *internal* artifact together with the *sdk* artifact
+It's also possible to download the SDK. Head over to https://puresdk.azurewebsites.net/ and login with your USERNAME and PASSWORD and download the *internal* artifact together with the *sdk* artifact
 
 ### How to use it
 The SDK is initialized automatically on launch by default, but it will not gather any data unless you choose to start tracking movement.
@@ -160,7 +150,7 @@ public void onRequestPermissionsResult(int requestCode,
 
 ### Onboarding
 
-It's important to ask for these permissions at the right time to get as many users as possible to opt in and to give a better user experience. Users should be presented with a reason for requesting location permission before triggering the actual OS permission dialog and you should also explain this in the terms together with how a user can opt out from tracking later on. Please contact fluxLoop if you need any language regarding this. There could also be scenarios where you want to trigger onboarding only for citizens of certain countries. Checking the country code and time zone of the device, could be a good way to do this.
+It's important to ask for these permissions at the right time to get as many users as possible to opt in and to give a better user experience. Users should be presented with a reason for requesting location permission before triggering the actual OS permission dialog and you should also explain this in the terms together with how a user can opt out from tracking later on. Please contact Unacast if you need any language regarding this. There could also be scenarios where you want to trigger onboarding only for citizens of certain countries. Checking the country code and time zone of the device, could be a good way to do this.
 
 ### Check if tracking is enabled
 It's recommended to have a switch under settings in your app where the user can enable and disable tracking. The current status can be checked by *Pure.getIsTracking()*
@@ -172,7 +162,7 @@ All configurations used by the SDK is provided by an external endpoint. This mak
 The SDK relies on scanning jobs running in the background. As these needs an application unique jobid, it's possible to change the range being used in case of collision with your own application. This is done by adding the following in your AndroidManifest.xml:
 
 ```xml
-   <meta-data android:name="com.pure.sdk.JobIdStartId" android:value="47483640" />
+<meta-data android:name="com.pure.sdk.JobIdStartId" android:value="47483640" />
 ```
 The default start index is 47483640 and the SDK reserves 20 ids starting from the default.
 
@@ -211,6 +201,7 @@ As these permissions are automatically merged into your androidmanifest.xml, you
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" tools:node="remove" />
 ```
 *Note that you need to add the tools namespace (xmlns:tools="http://schemas.android.com/tools") in the manifest element to get this option*
+
 
 ##### Getting your clientId
 If you need to get hold of the clientId, you can do so with the following snippet
@@ -253,6 +244,11 @@ To then do your manual init of the SDK, add the following code:
 
 ```
 
+*IMPORTANT* If you are using your own initialization logic, make sure this is done in the context of application.onCreate(). If the application is terminated either by the user or the OS, it will relaunch the application, but not the activities. If initialization is done in an activity, this will prevent the SDK gathering any data unless the application is launched by the user.
+
+If your intialization logic return false on application.onCreate(), and the user later in the app life cycle gives consent to tracking, you should immediately trigger Pure.init() in the current context, and then subsequently on each application.onCreate().
+
+Because of the above, doing manual initialization is not always straight forward, so we recommend using the default auto init behaviour unless you have good reasons not to.
 
 ## What kinds of data does the SDK collect
 With the default configuration, the SDK will collect information about nearby wifis, geo location and BLE devices (iBeacon, Eddystone and RawBle). These data comes with information about the device, battery levels, etc.
@@ -428,12 +424,6 @@ By default, it will not send any events unless tracking is enabled. If you want 
                 });
 ```
 
-### Delete personal data
-If the user wants to delete collected personal data, notify our service by triggering the following event:
-
-```
-Pure.createEvent("Privacy", { deletePersonalData: true })
-```
 
 ## How does the SDK work?
 The SDK relies on Google Awareness API, and not without reason. It's using the API to look at the current state of the device, and make sure scanning is triggered less frequently if e.g. the device is still and not moving. It's also using the Awareness API to trigger scanning on intervals and when the device has moved a certain threshold. All scanning intervals and movement thresholds are configured from the cloud.
@@ -441,8 +431,12 @@ The SDK relies on Google Awareness API, and not without reason. It's using the A
 In the default configuration, the SDK will used JobScheduler on Android 5+ to further preserve battery. This makes the OS stack up any pending jobs, and make sure it only runs on optimal times. It is possible to override this behaviour through the cloud config, but recommended behaviour is to allow the OS to pick the best windows for scanning and reporting data.
 
 
+## Encryption
+From version 1.2.15 and later, the SDK supports an extra encryption layer in addition to regular network encryption. Upon request, the SDK will be configured to encrypt all data sent to our servers. If configured, the SDK will receive a public RSA key from our configuration servers. This tells the SDK that all data transfered should be encrypted. The SDK will generate an AES secret, encrypt the payload with this key and then encrypt the AES secret using the public key aquired from the server. The encrypted AES secret will then be added to the request and our server will decrypt the secret using the private key known only by the server to aquire the actual AES secret for decrypting the payload.
+
+
 ## Geo-filtering
-The SDK has built in support for geo-filtering. This means that if you need to blacklist or whitelist any areas this can be done through the cloud configuration. If you need to use geo-filtering, please contact fluxLoop to agree on which areas you want to enable. If an area is blacklisted, the SDK will go into blacklist mode and not send any data. It will still do the occational location lookup to see if the device has moved to a valid location, but it will not send these events while in blacklisted areas. 
+The SDK has built in support for geo-filtering. This means that if you need to blacklist or whitelist any areas this can be done through the cloud configuration. If you need to use geo-filtering, please contact Unacast to agree on which areas you want to enable. If an area is blacklisted, the SDK will go into blacklist mode and not send any data. It will still do the occational location lookup to see if the device has moved to a valid location, but it will not send these events while in blacklisted areas. 
 
 
 ## Troubleshooting
@@ -457,3 +451,4 @@ If you experience any issues implementing the SDK, the first thing you should do
 To verify the initialization was successful, look for *Init completed*
 
 If you are doing a manual initialization, you will get the various through *getResultCode()* in the callback. 
+
