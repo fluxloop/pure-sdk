@@ -7,7 +7,7 @@ The Android SDK is available for applications targeting API level 14 and above. 
 ### Dependencies
 The SDK depends on the *play-services-ads-identifier* and *play-services-location* artifacts from com.google.android.gms. 
 
-*IMPORTANT: IF YOU ARE UPGRADING FROM A VERSION PRIOR TO 1.2.28, MAKE SURE TO REMOVE ANY REMAINING REFERENCES TO AWARENESS UNLESS IT'S BEING USED BY YOUR APPLICATION.*
+*IMPORTANT: IF YOU ARE UPGRADING FROM A VERSION PRIOR TO 1.2.28, MAKE SURE TO REMOVE ANY REMAINING REFERENCES TO AWARENESS UNLESS IT'S BEING USED BY YOUR APPLICATION. THE SDK IS NO LONGER USING THE AWARENESS API.*
 
 ### Installation
 
