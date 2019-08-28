@@ -3,6 +3,13 @@
 
 ## Changelog
 
+### 1.2.28
+- Removed the Awareness API dependency 
+- Moved to public maven repository
+
+### 1.2.27
+- Added scanning on interval without movement
+
 ### 1.2.26
 - Fixed issue with age on cellInfo and wifi events
 
