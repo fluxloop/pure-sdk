@@ -414,6 +414,15 @@ By default, it will not send any events unless tracking is enabled. If you want 
                 });
 ```
 
+## Delete data
+If the user requests to delete all personal data collected, you need to send the following event:
+
+```java
+Pure.createEvent("Privacy", { deletePersonalData: true })
+```
+
+This will be sent to our server immediately, and you will get an errorcallback if the device is offline. This is to ensure that the event has been sent and verified.
+
 
 ## Encryption
 From version 1.2.15 and later, the SDK supports an extra encryption layer in addition to regular network encryption. Upon request, the SDK will be configured to encrypt all data sent to our servers. If configured, the SDK will receive a public RSA key from our configuration servers. This tells the SDK that all data transfered should be encrypted. The SDK will generate an AES secret, encrypt the payload with this key and then encrypt the AES secret using the public key aquired from the server. The encrypted AES secret will then be added to the request and our server will decrypt the secret using the private key known only by the server to aquire the actual AES secret for decrypting the payload.
