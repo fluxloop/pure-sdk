@@ -7,7 +7,10 @@ The Android SDK is available for applications targeting API level 14 and above. 
 ### Dependencies
 The SDK depends on the *play-services-ads-identifier* and *play-services-location* artifacts from com.google.android.gms. 
 
-*IMPORTANT: IF YOU ARE UPGRADING FROM A VERSION PRIOR TO 1.2.28, MAKE SURE TO REMOVE ANY REMAINING REFERENCES TO AWARENESS UNLESS IT'S BEING USED BY YOUR APPLICATION. THE SDK IS NO LONGER USING THE AWARENESS API.*
+*IMPORTANT:* IF YOU ARE UPGRADING FROM A VERSION PRIOR TO 1.2.28, MAKE SURE TO REMOVE ANY REMAINING REFERENCES TO AWARENESS UNLESS IT'S BEING USED BY YOUR APPLICATION. THE SDK IS NO LONGER USING THE AWARENESS API.
+
+*IMPORTANT SDK 29 CHANGES:* To request background location on Android 10 when targeting SDK 29, you need to add `Manifest.permission.ACCESS_BACKGROUND_LOCATION` as part of your location permission request. `android.permission.ACCESS_BACKGROUND_LOCATION` comes bundled with the SDK manifest, but if you're using the SDK without manifest merging, please add this permission manually.
+
 
 ### Installation
 
@@ -97,7 +100,7 @@ public boolean checkLocationPermission() {
         } else {
             // No explanation needed, we can request the permission.
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION },
                     MY_PERMISSIONS_REQUEST_LOCATION);
         }
         return false;
