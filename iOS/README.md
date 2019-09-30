@@ -47,8 +47,8 @@ Make sure you've followed the instructions on the Carthage website, specifically
 
 Download the latest version of the framework(s) from :
 
-`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.93.zip?key=INSERT_KEY_HERE`
-`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.93.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.94.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.94.zip?key=INSERT_KEY_HERE`
 
 1. Open your project in Xcode.
 2. Drag and drop `PureSDK.framework` (and optionally `PureSDKBluetooth.framework`) into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
