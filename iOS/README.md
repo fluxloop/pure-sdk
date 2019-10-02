@@ -26,8 +26,8 @@ pod 'PureSDKBluetooth', :podspec => 'https://puresdk.azurewebsites.net/cocoapods
 
 If you'd like to specify a certain version, you can use the following link(s) instead (without a .zip ending!) :
 ```
-https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.94?key=INSERT_KEY_HERE
-https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.94?key=INSERT_KEY_HERE
+https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.95?key=INSERT_KEY_HERE
+https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.95?key=INSERT_KEY_HERE
 ```
 
 ### Carthage
@@ -47,8 +47,8 @@ Make sure you've followed the instructions on the Carthage website, specifically
 
 Download the latest version of the framework(s) from :
 
-`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.94.zip?key=INSERT_KEY_HERE`
-`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.94.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/sdk/versions/1.0.95.zip?key=INSERT_KEY_HERE`
+`https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.95.zip?key=INSERT_KEY_HERE`
 
 1. Open your project in Xcode.
 2. Drag and drop `PureSDK.framework` (and optionally `PureSDKBluetooth.framework`) into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
@@ -76,9 +76,9 @@ and the build phase "Strip Invalid Archs" should look like this :
 
 Apple requires all apps that import the `CoreBluetooth` framework to explicitly state its intention under the `NSBluetoothPeripheralUsageDescription` key in the application's `Info.plist`. Because of this, our bluetooth tracking code comes bundled as an optional framework (`PureSDKBluetooth.framework`).
 
-To install the framework, first double check that the `NSBluetoothPeripheralUsageDescription` key is set to a reasonable string in your application's `Info.plist`. Also make sure to add a description for `NSBluetoothAlwaysUsageDescription`. Failure to include these keys will cause your app to be rejected on App Store Connect upload. Then, follow the instructions below depending on the preferred installation method. The `PureSDKBluetooth` framework cannot be installed independently from `PureSDK` since the bluetooth code requires the core SDK to function.
+To install the framework, first double check that the `NSBluetoothPeripheralUsageDescription` key is set to a reasonable string in your application's `Info.plist`. Failure to include this key will cause your app to be rejected on App Store Connect upload. Then, follow the instructions below depending on the preferred installation method. The `PureSDKBluetooth` framework cannot be installed independently from `PureSDK` since the bluetooth code requires the core SDK to function.
 
-If you include the `bluetooth-central` (Uses Bluetooth LE accessories) background permission, we'll be able to provide much more detailed eddystone data for you. 
+If you include the `bluetooth-central` background perimission, then we are able to provide much more detailed eddystone data for you.
 
 Make sure you've followed the instructions on the Carthage website, specifically :
 1. Embedded Binaries should contain `Carthage/Build/iOS/PureSDK.framework` and `Carthage/Build/iOS/PureSDKBluetooth.framework` 
@@ -89,8 +89,6 @@ Make sure you've followed the instructions on the Carthage website, specifically
 Some of the SDK's data collection sources require extra keys in `Info.plist`, and some require the user to accept a popup. We will never trigger the permission popups from our code. It is your responsibility to present the permission prompt alert at an appropriate time.
 
 ### Location
-
-Add `location` to your UIBackgroundModes to ensure high quality data when the app is running in the background.
 
 Here are the `Info.plist` keys that Apple requires for location tracking :
 
