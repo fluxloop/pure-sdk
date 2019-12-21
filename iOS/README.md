@@ -1,4 +1,4 @@
-# PureSDK for iOS
+# PinchSDKLegacy for iOS
 
 ## Requirements
 The iOS SDK is available for applications targeting iOS 9.0 and above.
@@ -8,11 +8,11 @@ The iOS SDK is available for applications targeting iOS 9.0 and above.
 framework, please contact us if you don't yet have one. *
 
 We support Cocoapods, Carthage, and Dynamic Framework installation.
-If your app uses the `CoreBluetooth` framework, you may install the `PureSDKBluetooth` in addition to `PureSDK`. 
+If your app uses the `CoreBluetooth` framework, you may install the `PinchSDKLegacyBluetooth` in addition to `PinchSDKLegacy`. 
 All of our frameworks have bitcode and simulator slices included.
 
 After finishing installation, head to the `Usage` section to set the SDK up. The header file `Pure.h` contains documentation as well.
-If you installed the `PureSDKBluetooth` framework, take care to read the `Bluetooth` section as well.
+If you installed the `PinchSDKLegacyBluetooth` framework, take care to read the `Bluetooth` section as well.
 
 ### Cocoapods
 
@@ -20,8 +20,8 @@ Use the following, with your key substituted in :
 
 ```ruby
 use_frameworks!
-pod 'PureSDK', :podspec => 'https://puresdk.azurewebsites.net/cocoapods/sdk/versions/latest?key=INSERT_KEY_HERE'
-pod 'PureSDKBluetooth', :podspec => 'https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/latest?key=INSERT_KEY_HERE'
+pod 'PinchSDKLegacy', :podspec => 'https://puresdk.azurewebsites.net/cocoapods/sdk/versions/latest?key=INSERT_KEY_HERE'
+pod 'PinchSDKLegacyBluetooth', :podspec => 'https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/latest?key=INSERT_KEY_HERE'
 ```
 
 If you'd like to specify a certain version, you can use the following link(s) instead (without a .zip ending!) :
@@ -35,12 +35,12 @@ https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.95?key=INSERT
 Use the following, with your key substituted in :
 
 ```ruby
-binary "https://puresdk.azurewebsites.net/carthage/sdk/PureSDK.json?key=INSERT_KEY_HERE"
-binary "https://puresdk.azurewebsites.net/carthage/sdk/PureSDKBluetooth.json?key=INSERT_KEY_HERE"
+binary "https://puresdk.azurewebsites.net/carthage/sdk/PinchSDKLegacy.json?key=INSERT_KEY_HERE"
+binary "https://puresdk.azurewebsites.net/carthage/sdk/PinchSDKLegacyBluetooth.json?key=INSERT_KEY_HERE"
 ```
 
 Make sure you've followed the instructions on the Carthage website, specifically :
-1. Embedded Binaries should contain `Carthage/Build/iOS/PureSDK.framework` 
+1. Embedded Binaries should contain `Carthage/Build/iOS/PinchSDKLegacy.framework` 
 2. Run script calling `/usr/local/bin/carthage copy-frameworks` (and opt. input/output file setup)
 
 ### Dynamic Framework
@@ -51,15 +51,15 @@ Download the latest version of the framework(s) from :
 `https://puresdk.azurewebsites.net/cocoapods/bluetooth/versions/1.0.95.zip?key=INSERT_KEY_HERE`
 
 1. Open your project in Xcode.
-2. Drag and drop `PureSDK.framework` (and optionally `PureSDKBluetooth.framework`) into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
+2. Drag and drop `PinchSDKLegacy.framework` (and optionally `PinchSDKLegacyBluetooth.framework`) into your project. Make sure the `Copy files` box is checked. *Uncheck* any selected targets. Click ok.
 3. Select the target you wish to integrate the SDK into on the left-hand side of the project editor.
-5. Find the `Embedded Binaries` section under `General`, and add the `PureSDK.framework` (and optionally `PureSDKBluetooth.framework`) that you just included into your project. This will also add the framework to the `Linked Libraries and Frameworks` section.
+5. Find the `Embedded Binaries` section under `General`, and add the `PinchSDKLegacy.framework` (and optionally `PinchSDKLegacyBluetooth.framework`) that you just included into your project. This will also add the framework to the `Linked Libraries and Frameworks` section.
 6. Navigate to `Build Phases`, click the small `+` in the left area of the window, and click `New Run Script Phase`.
 7. Paste the following line(s) into the phase that was just added, and if you like rename the phase to "Strip Invalid Archs". This script (written by the excellent people at Realm!) removes architecture slices that are used on the iOS simulator.
 
 ```bash
-bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureSDK.framework/strip-frameworks.sh"
-bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureSDKBluetooth.framework/strip-frameworks.sh"
+bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinchSDKLegacy.framework/strip-frameworks.sh"
+bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinchSDKLegacyBluetooth.framework/strip-frameworks.sh"
 ```
 
 That's it! These instructions were last tested on Xcode 9.4 (9F1027a) and Xcode 10.1 (10B61).
@@ -74,14 +74,14 @@ and the build phase "Strip Invalid Archs" should look like this :
 
 ## Bluetooth
 
-Apple requires all apps that import the `CoreBluetooth` framework to explicitly state its intention under the `NSBluetoothPeripheralUsageDescription` key in the application's `Info.plist`. Because of this, our bluetooth tracking code comes bundled as an optional framework (`PureSDKBluetooth.framework`).
+Apple requires all apps that import the `CoreBluetooth` framework to explicitly state its intention under the `NSBluetoothPeripheralUsageDescription` key in the application's `Info.plist`. Because of this, our bluetooth tracking code comes bundled as an optional framework (`PinchSDKLegacyBluetooth.framework`).
 
-To install the framework, first double check that the `NSBluetoothPeripheralUsageDescription` key is set to a reasonable string in your application's `Info.plist`. Failure to include this key will cause your app to be rejected on App Store Connect upload. Then, follow the instructions below depending on the preferred installation method. The `PureSDKBluetooth` framework cannot be installed independently from `PureSDK` since the bluetooth code requires the core SDK to function.
+To install the framework, first double check that the `NSBluetoothPeripheralUsageDescription` key is set to a reasonable string in your application's `Info.plist`. Failure to include this key will cause your app to be rejected on App Store Connect upload. Then, follow the instructions below depending on the preferred installation method. The `PinchSDKLegacyBluetooth` framework cannot be installed independently from `PinchSDKLegacy` since the bluetooth code requires the core SDK to function.
 
 If you include the `bluetooth-central` background perimission, then we are able to provide much more detailed eddystone data for you.
 
 Make sure you've followed the instructions on the Carthage website, specifically :
-1. Embedded Binaries should contain `Carthage/Build/iOS/PureSDK.framework` and `Carthage/Build/iOS/PureSDKBluetooth.framework` 
+1. Embedded Binaries should contain `Carthage/Build/iOS/PinchSDKLegacy.framework` and `Carthage/Build/iOS/PinchSDKLegacyBluetooth.framework` 
 2. Run script calling `/usr/local/bin/carthage copy-frameworks` (and opt. input/output file setup)
 
 ## Permissions
@@ -146,7 +146,7 @@ All config variables used by the SDK are provided by an external service. This m
 
 ## Custom Data
 
-PureSDK provides additional methods to associate information with the current user session.
+PinchSDKLegacy provides additional methods to associate information with the current user session.
 
 ### Event
 
@@ -186,7 +186,7 @@ Here is an overview of what kinds of data we collect and upload.
 3. Network Connection
 4. Visits (always)
 
-If the `PureSDKBluetooth` framework is installed, we also collect :
+If the `PinchSDKLegacyBluetooth` framework is installed, we also collect :
 
 5. Eddystone UID
 6. Eddystone URL
